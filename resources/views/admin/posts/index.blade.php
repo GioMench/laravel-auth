@@ -2,8 +2,10 @@
 
 @section('content')
     <header class="py-3 bg-dark text-light">
-        <div class="container">
+        <div class="container d-flex align-items-center justify-content-between">
             <h1>Posts</h1>
+
+            <a class="btn btn-primary" href="{{route('admin.posts.create')}}"> New Post</a>
         </div>
 
 
@@ -35,7 +37,10 @@
                                 </td>
                                 <td>{{ $post->title }}</td>
                                 <td>{{ $post->slug }}</td>
-                                <td>show\edit\delete</td>
+                                <td><a class="btn btn-dark text-uppercase"
+                                        href="{{ route('admin.posts.show', $post) }}" style="font-size: 10px">show</a>
+                                        \edit\delete
+                                    </td>
 
 
                             </tr>
