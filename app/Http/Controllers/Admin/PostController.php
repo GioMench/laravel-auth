@@ -36,7 +36,7 @@ class PostController extends Controller
 
         $validated = $request->validated();
 
-        $slug = Str::slug($request->title);
+        $slug = Str::slug($request->title, '-');
         $validated['slug']= $slug;
 
         Post::create($validated);
