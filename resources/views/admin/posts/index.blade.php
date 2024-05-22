@@ -47,7 +47,7 @@
                                     <a class="btn btn-dark text-uppercase" style="font-size: 10px"
                                         href="{{ route('admin.posts.edit', $post) }}">Edit</a>
                                     <!-- Modal trigger button -->
-                                    <button type="button" class="btn btn-dark text-uppercase" data-bs-toggle="modal"
+                                    <button type="button" class="btn btn-danger text-uppercase" data-bs-toggle="modal"
                                         data-bs-target="#modal-{{$post->id}}" style="font-size: 10px">
                                         delete
                                     </button>
@@ -62,12 +62,12 @@
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title" id="modalTitleId">
-                                                        delete
+                                                        Delete post
                                                     </h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-label="Close"></button>
                                                 </div>
-                                                <div class="modal-body">Destroy everything</div>
+                                                <div class="modal-body">Destroy {{$post->title}}?</div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary"
                                                         data-bs-dismiss="modal">
