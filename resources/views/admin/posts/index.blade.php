@@ -39,7 +39,7 @@
                                 <td>{{ $post->slug }}</td>
                                 <td><a class="btn btn-dark text-uppercase"
                                         href="{{ route('admin.posts.show', $post) }}" style="font-size: 10px">show</a>
-                                        \edit\delete
+                                        <a class="btn btn-dark text-uppercase" style="font-size: 10px" href="{{route('admin.posts.edit',$post)}}">Edit</a>delete
                                     </td>
 
 
