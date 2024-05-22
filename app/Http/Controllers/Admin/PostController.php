@@ -58,6 +58,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
+        //dd($post);
         return view('admin.posts.edit',compact('post'));
     }
 

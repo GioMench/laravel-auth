@@ -9,8 +9,7 @@
 
     <div class="container py-5">
 
-      
-           @include('partials.validation-message') 
+        @include('partials.validation-message') 
 
         <form action="{{ route('admin.posts.update', $post) }}" method="post">
             @csrf
@@ -53,10 +52,7 @@
 
             <button type="submit" class="btn btn-primary">
                Save
-
             </button>
-
-
         </form>
     </div>
 @endsection

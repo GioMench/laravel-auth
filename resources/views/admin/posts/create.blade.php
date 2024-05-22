@@ -10,6 +10,7 @@
     <div class="container py-5">
 
         @include('partials.validation-message')
+        
         <form action="{{ route('admin.posts.store') }}" method="post">
             @csrf
             <div class="mb-3">
