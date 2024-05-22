@@ -10,16 +10,8 @@
     <div class="container py-5">
 
       
-            
+           @include('partials.validation-message') 
 
-        @if ($errors->any())
-            <div class="alert alert-danger" role="alert">
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-                <ul></ul>
-            </div>
-        @endif
         <form action="{{ route('admin.posts.update', $post) }}" method="post">
             @csrf
             @method('PUT')

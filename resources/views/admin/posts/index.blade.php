@@ -14,12 +14,7 @@
             <h3 class="text-muted">All posts</h3>
             <div class="table-responsive">
                 <!--succes-alert-edit/create-->
-                @if (session('message'))
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        {{ session('message') }}
-                    </div>
-                @endif
+                @include('partials.session-message')
 
                 <table class="table table-light">
                     <thead>
@@ -62,7 +57,7 @@
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title" id="modalTitleId">
-                                                        Delete post
+                                                        Delete
                                                     </h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-label="Close"></button>

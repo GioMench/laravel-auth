@@ -9,17 +9,7 @@
 
     <div class="container py-5">
 
-        
-        @endif
-
-        @if ($errors->any())
-            <div class="alert alert-danger" role="alert">
-                @foreach ($errors->all() as $error )
-                    <li>{{$error}}</li>
-                @endforeach
-                <ul></ul>
-            </div>
-        @endif
+        @include('partials.validation-message')
         <form action="{{ route('admin.posts.store') }}" method="post">
             @csrf
             <div class="mb-3">
