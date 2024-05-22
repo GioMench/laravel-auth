@@ -37,21 +37,25 @@
                                 </td>
                                 <td>{{ $post->title }}</td>
                                 <td>{{ $post->slug }}</td>
-                                <td><a class="btn btn-dark text-uppercase" href="{{ route('admin.posts.show', $post) }}"
-                                        style="font-size: 10px">show</a>
+                                <td>
+                                    <a class="btn btn-dark text-uppercase"
+                                        href="{{ route('admin.posts.show', $post) }}"style="font-size: 10px">
+                                        show
+                                    </a>
                                     <a class="btn btn-dark text-uppercase" style="font-size: 10px"
-                                        href="{{ route('admin.posts.edit', $post) }}">Edit</a>
+                                        href="{{ route('admin.posts.edit', $post) }}">
+                                        Edit
+                                    </a>
                                     <!-- Modal trigger button -->
-                                    <button type="button" class="btn btn-danger text-uppercase" data-bs-toggle="modal"
-                                        data-bs-target="#modal-{{$post->id}}" style="font-size: 10px">
+                                    <button type="button" class="btn btn-danger text-uppercase" data-bs-toggle="modal" data-bs-target="#modal-{{ $post->id }}" style="font-size: 10px">
                                         delete
                                     </button>
 
                                     <!-- Modal Body -->
                                     <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
-                                    <div class="modal fade" id="modal-{{$post->id}}" tabindex="-1" data-bs-backdrop="static"
-                                        data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId-{{$post->id}}"
-                                        aria-hidden="true">
+                                    <div class="modal fade" id="modal-{{ $post->id }}" tabindex="-1"
+                                        data-bs-backdrop="static" data-bs-keyboard="false" role="dialog"
+                                        aria-labelledby="modalTitleId-{{ $post->id }}" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm"
                                             role="document">
                                             <div class="modal-content">
@@ -62,47 +66,34 @@
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-label="Close"></button>
                                                 </div>
-                                                <div class="modal-body">Destroy {{$post->title}}?</div>
+                                                <div class="modal-body">Destroy {{ $post->title }}?</div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary"
                                                         data-bs-dismiss="modal">
                                                         Close
                                                     </button>
-                                                    <form action="{{route('admin.posts.destroy', $post)}}" method="post">
+                                                    <form action="{{ route('admin.posts.destroy', $post) }}"
+                                                        method="post">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button
-                                                            type="submit"
-                                                            class="btn btn-danger"
-                                                        >
+                                                        <button type="submit" class="btn btn-danger">
                                                             Confirm
                                                         </button>
-                                                        
+
                                                     </form>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-
-                                   
-
                                 </td>
-
-
                             </tr>
                         @empty
-
                             <td scope="row" colspan="5">No posts yet!</td>
-
-                            </tr>
                         @endforelse
-
-
 
                     </tbody>
                 </table>
             </div>
-
         </div>
     </section>
 @endsection
