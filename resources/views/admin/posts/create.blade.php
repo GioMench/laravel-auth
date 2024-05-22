@@ -9,6 +9,9 @@
 
     <div class="container py-5">
 
+        
+        @endif
+
         @if ($errors->any())
             <div class="alert alert-danger" role="alert">
                 @foreach ($errors->all() as $error )

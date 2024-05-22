@@ -42,7 +42,7 @@ class PostController extends Controller
         Post::create($validated);
 
         //redirect
-        return to_route('admin.posts.index');
+        return to_route('admin.posts.index')->with('message','Post created successfully');
     }
 
     /**
@@ -76,7 +76,7 @@ class PostController extends Controller
         $post->update($validated);
 
         //redirect
-        return to_route('admin.posts.index');
+        return to_route('admin.posts.index')->with('message',"Post  $post->title update successfully");
 
     }
 
