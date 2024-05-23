@@ -33,9 +33,9 @@
                                 <td scope="row">{{ $post->id }}</td>
                                 <td>
                                     @if (Str::startsWith($post->cover_image,'https://'))
-                                     <img width="200px" src=" {{ $post->cover_image }}" alt="{{$post->title}}">  
+                                     <img width="200px" loading="lazy" src=" {{ $post->cover_image }}" alt="{{$post->title}}">  
                                      @else
-                                     <img width="200px"  src="{{asset('storage/' . $post->cover_image)}}" alt="{{$post->title}}"> 
+                                     <img width="200px" loading="lazy" src="{{asset('storage/' . $post->cover_image)}}" alt="{{$post->title}}"> 
                                     @endif
                                     
 
