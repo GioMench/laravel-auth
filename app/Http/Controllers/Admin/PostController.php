@@ -6,6 +6,7 @@ use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Models\Post;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class PostController extends Controller
@@ -40,6 +41,10 @@ class PostController extends Controller
 
         //create
         Post::create($validated);
+        $image_path = Storage::put('uploads', $validated['cover_image']);
+        //dd($image_path);
+        $validated['cover_image'] = $image_path;
+        
 
         //redirect
         return to_route('admin.posts.index')->with('message','Post created successfully');

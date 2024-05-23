@@ -32,7 +32,12 @@
                             <tr class="">
                                 <td scope="row">{{ $post->id }}</td>
                                 <td>
-                                    <img width="200px" src=" {{ $post->cover_image }}" alt="">
+                                    @if (Str::startsWith($post->cover_image,'https://'))
+                                     <img width="200px" src=" {{ $post->cover_image }}" alt="{{$post->title}}">  
+                                     @else
+                                     <img width="200px"  src="{{asset('storage/' . $post->cover_image)}}" alt="{{$post->title}}"> 
+                                    @endif
+                                    
 
                                 </td>
                                 <td>{{ $post->title }}</td>
