@@ -9,17 +9,16 @@
 
     <div class="container py-5">
 
-        @include('partials.validation-message') 
+        @include('partials.validation-message')
 
-        <form action="{{ route('admin.posts.update', $post) }}" method="post">
+        <form action="{{ route('admin.posts.update', $post) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
-                <input type="text" class="form-control @error('title') is-invalid @enderror" name="title"
-                    id="title" aria-describedby="titleHelper" placeholder=".."
-                    value="{{ old('title', $post->title) }}" />
+                <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" id="title"
+                    aria-describedby="titleHelper" placeholder=".." value="{{ old('title', $post->title) }}" />
                 <small id="titleHelper" class="form-text text-muted">type a title for this post</small>
                 @error('title')
                     <div class="text-danger py-2"> {{ $message }}</div>
@@ -29,13 +28,21 @@
 
 
             <div class="d-flex gap-2 mb-3">
-                <img width="300px" src="{{ $post->cover_image }}" alt="image description for {{ $post->title }}">
+
+                @if (Str::startsWith($post->cover_image, 'https://'))
+                    <img width="300px" src=" {{ $post->cover_image }}" alt="{{ $post->title }}">
+                @else
+                    <img width="300px" src="{{ asset('storage/' . $post->cover_image) }}" alt="{{ $post->title }}">
+                @endif
+
+
                 <div>
                     <label for="cover_image" class="form-label">cover_image</label>
-                    <input type="text" class="form-control  @error('cover_image') is-invalid @enderror"
+                    <input type="file" class="form-control  @error('cover_image') is-invalid @enderror"
                         name="cover_image" id="cover_image" aria-describedby="cover_imageHelper" placeholder=".."
                         value="{{ old('cover_image', $post->cover_image) }}" />
-                    <small id="cover_imageHelper" class="form-text text-muted">type name of cover_image for this post</small>
+                    <small id="cover_imageHelper" class="form-text text-muted">type name of cover_image for this
+                        post</small>
                     @error('cover_image')
                         <div class="text-danger py-2"> {{ $message }}</div>
                     @enderror
@@ -51,7 +58,7 @@
             </div>
 
             <button type="submit" class="btn btn-primary">
-               Save
+                Save
             </button>
         </form>
     </div>

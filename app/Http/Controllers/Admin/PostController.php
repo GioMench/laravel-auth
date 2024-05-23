@@ -37,17 +37,22 @@ class PostController extends Controller
         //validate
         $validated = $request->validated();
         $slug = Str::slug($request->title, '-');
-        $validated['slug']= $slug;
+        $validated['slug'] = $slug;
 
         //create
+
+
+        if ($request->has('cover_image')) {
+            $image_path = Storage::put('uploads', $validated['cover_image']);
+            //dd($image_path);
+            $validated['cover_image'] = $image_path;
+        };
+
         Post::create($validated);
-        $image_path = Storage::put('uploads', $validated['cover_image']);
-        //dd($image_path);
-        $validated['cover_image'] = $image_path;
-        
+
 
         //redirect
-        return to_route('admin.posts.index')->with('message','Post created successfully');
+        return to_route('admin.posts.index')->with('message', 'Post created successfully');
     }
 
     /**
@@ -64,7 +69,7 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         //dd($post);
-        return view('admin.posts.edit',compact('post'));
+        return view('admin.posts.edit', compact('post'));
     }
 
     /**
@@ -77,13 +82,22 @@ class PostController extends Controller
         //validate
         $validated = $request->validated();
         $slug = Str::slug($request->title, '-');
-        $validated['slug']= $slug;
+        $validated['slug'] = $slug;
+
+        if($request->has('cover_image')){
+            if($post->cover_image){
+                //delete the old image
+                Storage::delete($post->cover_image);
+            }
+            $image_path = Storage::put('uploads', $validated['cover_image']);
+            
+            $validated['cover_image'] = $image_path;
+        };
         //update
         $post->update($validated);
 
         //redirect
-        return to_route('admin.posts.index')->with('message',"Post  $post->title update successfully");
-
+        return to_route('admin.posts.index')->with('message', "Post  $post->title update successfully");
     }
 
     /**
@@ -92,8 +106,6 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
-        return to_route('admin.posts.index')->with('message',"Post  $post->title delete successfully");
-
-
+        return to_route('admin.posts.index')->with('message', "Post  $post->title delete successfully");
     }
 }
