@@ -92,7 +92,7 @@ class PostController extends Controller
             $image_path = Storage::put('uploads', $validated['cover_image']);
             
             $validated['cover_image'] = $image_path;
-        };
+        }
         //update
         $post->update($validated);
 
@@ -105,6 +105,10 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+        if($post->cover_image){
+            //delete the old image
+            Storage::delete($post->cover_image);
+        }
         $post->delete();
         return to_route('admin.posts.index')->with('message', "Post  $post->title delete successfully");
     }
