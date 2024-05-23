@@ -11,7 +11,7 @@
 
         @include('partials.validation-message')
         
-        <form action="{{ route('admin.posts.store') }}" method="post">
+        <form action="{{ route('admin.posts.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
@@ -25,7 +25,7 @@
 
             <div class="mb-3">
                 <label for="cover_image" class="form-label">cover_image</label>
-                <input type="text" class="form-control  @error('cover_image') is-invalid @enderror" name="cover_image" id="cover_image" aria-describedby="cover_imageHelper"
+                <input type="file" class="form-control  @error('cover_image') is-invalid @enderror" name="cover_image" id="cover_image" aria-describedby="cover_imageHelper"
                     placeholder=".." value="{{old('cover_image')}}"/>
                 <small id="cover_imageHelper" class="form-text text-muted">type a title for thi post</small>
                 @error('cover_image')
