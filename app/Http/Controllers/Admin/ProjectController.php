@@ -6,7 +6,7 @@ use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Project;
 use App\Http\Controllers\Controller;
-use illminate\Support\Storage;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 
