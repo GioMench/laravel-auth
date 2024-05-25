@@ -20,6 +20,7 @@
                     <h4 class="text-muted">description</h4>
                 
                     <p>{{ $project->description }}</p>
+                    
                 </div>
             </div>
         </div>
