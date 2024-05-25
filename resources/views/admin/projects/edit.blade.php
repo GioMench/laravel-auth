@@ -11,15 +11,15 @@
 
         @include('partials.validation-message')
 
-        <form action="{{ route('admin.projects.update', $post) }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('admin.projects.update', $project) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
             <div class="mb-3">
                 <label for="project_name" class="form-label">project_name</label>
                 <input type="text" class="form-control @error('project_name') is-invalid @enderror" name="project_name" id="project_name"
-                    aria-describedby="project_nameHelper" placeholder=".." value="{{ old('project_name', $post->project_name) }}" />
-                <small id="project_nameHelper" class="form-text text-muted">type a project_name for this post</small>
+                    aria-describedby="project_nameHelper" placeholder=".." value="{{ old('project_name', $project->project_name) }}" />
+                <small id="project_nameHelper" class="form-text text-muted">type a project_name for this project</small>
                 @error('project_name')
                     <div class="text-danger py-2"> {{ $message }}</div>
                 @enderror
