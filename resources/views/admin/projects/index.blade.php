@@ -32,11 +32,9 @@
                             <tr class="">
                                 <td scope="row">{{ $project->id }}</td>
                                 <td>
-                                    @if (Str::startsWith($project->preview_image,'https://'))
-                                     <img width="200px" loading="lazy" src=" {{ $project->preview_image }}" alt="{{$project->project_name}}">  
-                                     @else
+                                    
                                      <img width="200px" loading="lazy" src="{{asset('storage/' . $project->preview_image)}}" alt="{{$project->project_name}}"> 
-                                    @endif
+                                   
                                     
 
                                 </td>

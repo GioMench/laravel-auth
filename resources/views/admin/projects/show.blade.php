@@ -12,11 +12,9 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    @if (Str::startsWith($project->project_image, 'https://'))
-                        <img width="400px" src=" {{ $project->project_image }}" alt="{{ $project->project_name }}">
-                    @else
-                        <img width="400px" src="{{ asset('storage/' . $project->project_image) }}" alt="{{ $project->project_name }}">
-                    @endif
+                   
+                        <img width="400px" src="{{ asset('storage/' . $project->preview_image) }}" alt="{{ $project->project_name }}">
+                    
                 </div>
                 <div class="col">
                     <h4 class="text-muted">description</h4>
